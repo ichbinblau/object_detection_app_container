@@ -22,7 +22,7 @@ WORKDIR /home/edge
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 
-RUN ["/bin/bash", "-c", "Anaconda3-5.1.0-Linux-x86_64.sh -b -p /home/edge/anaconda3"]
+RUN bash Anaconda3-5.1.0-Linux-x86_64.sh -b -p /home/edge/anaconda3
 
 ENV PATH /home/edge/anaconda3/bin:$PATH
 
