@@ -34,4 +34,4 @@ COPY environment.yml /home/edge/object_detector_app/environment.yml
 
 RUN conda env create -f environment.yml python=3.5
 
-RUN ["/bin/bash", "-c", "source activate object-detection && python3 object_detection_app.py"]
+#RUN ["/bin/bash", "-c", "source activate object-detection && python3 object_detection_app.py"]
