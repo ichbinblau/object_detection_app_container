@@ -9,7 +9,9 @@ RUN apt-get update \
     unzip \
     bzip2 \
     software-properties-common \
-    python-setuptools
+    python-setuptools \
+    vim \
+    libgtk2.0-0
 
 # create user edge
 RUN useradd -c "edge device" -m edge
