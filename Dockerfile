@@ -89,7 +89,9 @@ RUN sudo -E -H pip3 install tensorflow==1.2.0 \
     markdown==2.2.0 \
     protobuf==3.3.0 \ 
     tensorflow==1.2.0 \
-    werkzeug==0.12.2
+    werkzeug==0.12.2 \
+    pillow==4.1.1 \
+    matplotlib==2.0.2
 
 RUN git config --global http.proxy $http_proxy || echo "No http proxy is set."
 RUN git config --global https.proxy $https_proxy || echo "No https proxy is set."
