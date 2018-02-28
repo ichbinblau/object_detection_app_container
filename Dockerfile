@@ -36,6 +36,7 @@ RUN apt-get update \
     python-setuptools \
     vim \
     sudo \
+    python-pip \
     qt5-default libvtk6-dev \
     zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev \
     libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev \
@@ -77,11 +78,24 @@ RUN make -j4
 RUN sudo make install
 
 RUN sudo ldconfig
- 
-RUN git config --global http.proxy $http_proxy || echo "no http proxy"
+
+# set proxy for user edge
+ENV http_proxy ${http_p}
+ENV https_proxy ${https_p}
+
+RUN sudo -E -H pip3 install tensorflow==1.2.0 \
+    backports.weakref==1.0rc1 \
+    bleach==1.5.0 \
+    html5lib==0.9999999 \
+    markdown==2.2.0 \
+    protobuf==3.3.0 \ 
+    tensorflow==1.2.0 \
+    werkzeug==0.12.2
+
+RUN git config --global http.proxy $http_proxy || echo "No http proxy is set."
 RUN git config --global https.proxy $https_proxy || echo "No https proxy is set."
 
-RUN git clone https://github.com/datitran/object_detector_app.git
+RUN git clone --progress https://github.com/datitran/object_detector_app.git
 
 WORKDIR /home/edge/object_detector_app
 
